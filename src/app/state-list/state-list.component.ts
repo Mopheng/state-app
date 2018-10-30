@@ -18,7 +18,6 @@ export class StateListComponent implements OnInit {
   constructor(private stateListService: StateListService) {
     this.stateListService.get_state_list()
       .subscribe((res: any) => {
-        console.log(res);
         this.stateList = res.data;
       });
   }
@@ -35,7 +34,5 @@ export class StateListComponent implements OnInit {
         this.countyList = res.data;
       });
   }
-
-  // find_state_detail_url
 
 }
