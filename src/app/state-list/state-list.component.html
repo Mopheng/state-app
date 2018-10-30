@@ -1,0 +1,63 @@
+<div class="outer">
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text"
+               class="form-control state-search"
+               name="searchString"
+               [(ngModel)]="searchString"
+               placeholder=" search state here">
+      </div>
+    </div>
+  </form>
+
+  <table>
+    <tr>
+      <th>With Click</th>
+      <th *ngIf="showDetails">Details</th>
+      <th>With Filter</th>
+    </tr>
+    <tr>
+      <td>
+        <div class="inner">
+          <table>
+            <tr *ngFor="let state of stateList; let i = index">
+              <td (click)="state_details(i)">{{ state.state }}</td>
+            </tr>
+          </table>
+        </div>
+      </td>
+      <td *ngIf="showDetails">
+        <div class="inner">
+        <table>
+          <tr class="general-detail">
+            <h4>State Name: {{ stateList[clickedIndex].state }}</h4>
+            <h4>Total Population: {{ stateList[clickedIndex].population }}</h4>
+            <h4>County Amount: {{ stateList[clickedIndex].counties }}</h4>
+          </tr>
+
+          <tr>
+            <th>Name</th>
+            <th>Population</th>
+          </tr>
+          <tr *ngFor="let county of countyList; let i = index">
+            <td>{{ county.county }}</td>
+            <td>{{ county.population }}</td>
+          </tr>
+
+        </table>
+      </div>
+      </td>
+      <td>
+        <div class="inner">
+        <table>
+          <tr *ngFor="let state of stateList | searchState: 'state' : searchString ; let i = index">
+            <td>{{ state.state }}</td>
+          </tr>
+        </table>
+      </div>
+      </td>
+    </tr>
+  </table>
+</div>
