@@ -50,18 +50,18 @@ export class StateListComponent implements OnInit {
             this.equality = this.countyPopulationSum === this.stateList[index].population;
           });
       }
-    }, 200);
+    }, 250);
   }
 
-  highlight_toggle(index: number, left: boolean) {
+  highlight_toggle(state: number, left: boolean) {
     this.isSingleClick = false;
 
-    this.leftHighlightedMap[index] = !this.leftHighlightedMap[index];
+    this.leftHighlightedMap[state] = !this.leftHighlightedMap[state];
     // if to separate highlighting action between left and right panel, use code blow and change variable in template
     // if (left) {
-    //   this.leftHighlightedMap[index] = !this.leftHighlightedMap[index];
+    //   this.leftHighlightedMap[state] = !this.leftHighlightedMap[state];
     // } else {
-    //   this.rightHighlightedMap[index] = !this.rightHighlightedMap[index];
+    //   this.rightHighlightedMap[state] = !this.rightHighlightedMap[state];
     // }
   }
 

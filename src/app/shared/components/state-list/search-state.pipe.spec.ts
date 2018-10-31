@@ -1,4 +1,4 @@
-import { SearchStatePipe } from '../pipes/search-state.pipe';
+import { SearchStatePipe } from '../../pipes/search-state.pipe';
 
 describe('SearchStatePipe', () => {
   it('create an instance', () => {

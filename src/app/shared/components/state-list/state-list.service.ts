@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpCallService} from '../http-call.service';
+import {HttpCallService} from '../../../http-call.service';
 
 @Injectable()
 export class StateListService {

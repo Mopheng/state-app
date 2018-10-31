@@ -24,8 +24,8 @@
           <table>
             <tr *ngFor="let state of stateList; let i = index">
               <td (click)="state_details(i)"
-                  (dblclick)="highlight_toggle(i, true)"
-                  [class.highlighted]="leftHighlightedMap[i]">
+                  (dblclick)="highlight_toggle(state.state, true)"
+                  [class.highlighted]="leftHighlightedMap[state.state]">
                 {{ state.state }}
               </td>
             </tr>
@@ -61,8 +61,8 @@
           <tr *ngFor="let state of stateList | searchState: 'state' : searchString ; let i = index">
             <!--Change leftHighlightedMap to rightHighlightedMap to separate highlighting action between left and right panel-->
             <td (click)="state_details(i)"
-                (dblclick)="highlight_toggle(i, false)"
-                [class.highlighted]="leftHighlightedMap[i]">
+                (dblclick)="highlight_toggle(state.state, false)"
+                [class.highlighted]="leftHighlightedMap[state.state]">
               {{ state.state }}
             </td>
           </tr>

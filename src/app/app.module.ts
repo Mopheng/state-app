@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { StateListComponent } from './state-list/state-list.component';
+import { StateListComponent } from './shared/components/state-list/state-list.component';
 import {HttpCallService} from './http-call.service';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { SearchStatePipe } from './pipes/search-state.pipe';
+import { SearchStatePipe } from './shared/pipes/search-state.pipe';
 
 
 
