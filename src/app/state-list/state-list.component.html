@@ -37,10 +37,10 @@
         <table>
           <tr class="general-detail">
             <h4>State Name: {{ stateList[clickedIndex].state }}</h4>
-            <h4>Total State Population: {{ stateList[clickedIndex].population }}</h4>
+            <h4>Total State Population: <span [ngClass]="equality ? 'equal' : 'unequal'">{{ stateList[clickedIndex].population }}</span></h4>
             <h4>County Amount: {{ stateList[clickedIndex].counties }}</h4>
-            <h4>Sum of County Population: {{ countyPopulationSum }}</h4>
-            <h4>Equal or not: {{ equality }}</h4>
+            <h4>Sum of County Population: <span [ngClass]="equality ? 'equal' : 'unequal'">{{ countyPopulationSum }}</span></h4>
+            <h4>Equal or not: <span [ngClass]="equality ? 'equal' : 'unequal'">{{ equality }}</span></h4>
           </tr>
 
           <tr>

@@ -18,7 +18,6 @@ export class StateListComponent implements OnInit {
   isSingleClick = true;
   clickedIndex: number;
   searchString: string;
-  leftClicked = false;
   countyPopulationSum: number;
 
   constructor(private stateListService: StateListService) {
@@ -41,6 +40,7 @@ export class StateListComponent implements OnInit {
         this.clickedIndex = index;
         this.countyPopulationSum = 0;
         const detailLink = this.stateList[index].detail;
+
         this.stateListService.get_state_detail(detailLink)
           .subscribe((res: any) => {
             this.countyList = res.data;
@@ -62,7 +62,8 @@ export class StateListComponent implements OnInit {
       this.rightHighlightedMap[index] = !this.rightHighlightedMap[index];
     }
   }
-  county_population_sum(countyList: object[]) {
+
+  county_population_sum(countyList: any[]) {
     countyList.forEach((county) => {
       this.countyPopulationSum += county.population;
     });
