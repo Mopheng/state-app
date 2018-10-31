@@ -56,11 +56,13 @@ export class StateListComponent implements OnInit {
   highlight_toggle(index: number, left: boolean) {
     this.isSingleClick = false;
 
-    if (left) {
-      this.leftHighlightedMap[index] = !this.leftHighlightedMap[index];
-    } else {
-      this.rightHighlightedMap[index] = !this.rightHighlightedMap[index];
-    }
+    this.leftHighlightedMap[index] = !this.leftHighlightedMap[index];
+    // if to separate highlighting action between left and right panel, use code blow and change variable in template
+    // if (left) {
+    //   this.leftHighlightedMap[index] = !this.leftHighlightedMap[index];
+    // } else {
+    //   this.rightHighlightedMap[index] = !this.rightHighlightedMap[index];
+    // }
   }
 
   county_population_sum(countyList: any[]) {
