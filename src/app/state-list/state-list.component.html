@@ -23,7 +23,11 @@
         <div class="inner">
           <table>
             <tr *ngFor="let state of stateList; let i = index">
-              <td (click)="state_details(i)">{{ state.state }}</td>
+              <td (click)="state_details(i)"
+                  (dblclick)="highlight_toggle(i, true)"
+                  [class.highlighted]="leftHighlightedMap[i]">
+                {{ state.state }}
+              </td>
             </tr>
           </table>
         </div>
@@ -33,8 +37,10 @@
         <table>
           <tr class="general-detail">
             <h4>State Name: {{ stateList[clickedIndex].state }}</h4>
-            <h4>Total Population: {{ stateList[clickedIndex].population }}</h4>
+            <h4>Total State Population: {{ stateList[clickedIndex].population }}</h4>
             <h4>County Amount: {{ stateList[clickedIndex].counties }}</h4>
+            <h4>Sum of County Population: {{ countyPopulationSum }}</h4>
+            <h4>Equal or not: {{ equality }}</h4>
           </tr>
 
           <tr>
@@ -53,7 +59,12 @@
         <div class="inner">
         <table>
           <tr *ngFor="let state of stateList | searchState: 'state' : searchString ; let i = index">
-            <td>{{ state.state }}</td>
+            <!--Change leftHighlightedMap to rightHighlightedMap to separate highlighting action between left and right panel-->
+            <td (click)="state_details(i)"
+                (dblclick)="highlight_toggle(i, false)"
+                [class.highlighted]="leftHighlightedMap[i]">
+              {{ state.state }}
+            </td>
           </tr>
         </table>
       </div>

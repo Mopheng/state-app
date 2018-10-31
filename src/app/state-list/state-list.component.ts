@@ -11,9 +11,15 @@ export class StateListComponent implements OnInit {
 
   stateList = [];
   countyList = [];
+  leftHighlightedMap = {};
+  rightHighlightedMap = {};
   showDetails = false;
+  equality = false;
+  isSingleClick = true;
   clickedIndex: number;
   searchString: string;
+  leftClicked = false;
+  countyPopulationSum: number;
 
   constructor(private stateListService: StateListService) {
     this.stateListService.get_state_list()
@@ -26,13 +32,40 @@ export class StateListComponent implements OnInit {
   }
 
   state_details(index: number) {
-    this.showDetails = true;
-    this.clickedIndex = index;
-    const detailLink = this.stateList[index].detail;
-    this.stateListService.get_state_detail(detailLink)
-      .subscribe((res: any) => {
-        this.countyList = res.data;
-      });
+    this.isSingleClick = true;
+
+    setTimeout(() => {
+      // detect whether action is single click or double click
+      if (this.isSingleClick) {
+        this.showDetails = true;
+        this.clickedIndex = index;
+        this.countyPopulationSum = 0;
+        const detailLink = this.stateList[index].detail;
+        this.stateListService.get_state_detail(detailLink)
+          .subscribe((res: any) => {
+            this.countyList = res.data;
+            this.county_population_sum(this.countyList);
+
+            // check if sum of county population equals record of state population
+            this.equality = this.countyPopulationSum === this.stateList[index].population;
+          });
+      }
+    }, 200);
+  }
+
+  highlight_toggle(index: number, left: boolean) {
+    this.isSingleClick = false;
+
+    if (left) {
+      this.leftHighlightedMap[index] = !this.leftHighlightedMap[index];
+    } else {
+      this.rightHighlightedMap[index] = !this.rightHighlightedMap[index];
+    }
+  }
+  county_population_sum(countyList: object[]) {
+    countyList.forEach((county) => {
+      this.countyPopulationSum += county.population;
+    });
   }
 
 }

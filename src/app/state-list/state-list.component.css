@@ -9,6 +9,10 @@ td, th {
   width:100px;
 }
 
+.highlighted {
+  background-color: yellow;
+  /*background-*/
+}
 .outer {position:relative}
 .inner {
   overflow-x: auto;
